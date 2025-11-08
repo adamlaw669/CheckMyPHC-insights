@@ -1,13 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import {
-  AlertCircle,
-  TrendingUp,
-  PackageX,
-  MapPin,
-  AlertTriangle,
-  Activity,
-} from "lucide-react";
 import type { PHC, SimulatedAlert } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
@@ -39,10 +31,12 @@ export async function sendSimulatedAlert(
     phc_lga: phc["PHC LGA"] || "",
     phc_state: phc["State of PHC"] || "",
     alert_type: type,
+    type,
     timestamp: new Date().toISOString(),
     severity:
       type === "outbreak" ? "high" : type === "resource" ? "medium" : "low",
     message: generateAlertMessage(phc, type),
+    channel: "Simulated",
   };
 
   const alerts = loadSimulatedAlerts();
@@ -93,35 +87,35 @@ export function normalizePHCState(phc: PHC): string {
 }
 
 // Alert Type Utilities
-export function getAlertTypeIcon(type: string) {
+export function getAlertTypeIcon(type: string): string {
   switch (type?.toLowerCase()) {
     case "outbreak":
-      return AlertCircle;
+      return "🔴";
     case "resource":
-      return PackageX;
+      return "📦";
     case "underserved":
-      return MapPin;
+      return "⚠️";
     case "warning":
-      return AlertTriangle;
+      return "⚠️";
     case "trend":
-      return TrendingUp;
+      return "📈";
     default:
-      return Activity;
+      return "ℹ️";
   }
 }
 
 export function getAlertTypeColor(type: string): string {
   switch (type?.toLowerCase()) {
     case "outbreak":
-      return "destructive";
+      return "#ef4444";
     case "resource":
-      return "warning";
+      return "#f59e0b";
     case "underserved":
-      return "default";
+      return "#0ea5e9";
     case "warning":
-      return "warning";
+      return "#f59e0b";
     default:
-      return "secondary";
+      return "#6b7280";
   }
 }
 
@@ -171,15 +165,19 @@ export function debounce<T extends (...args: any[]) => any>(
 
 // Map Marker Size Calculation
 export function calculateMarkerSize(
-  value: number,
-  min: number,
-  max: number
+  value: number | undefined,
+  min: number = 0,
+  max: number = 1
 ): number {
-  // Scale from 20 to 60 pixels
   const minSize = 20;
   const maxSize = 60;
-  const normalized = (value - min) / (max - min);
-  return minSize + normalized * (maxSize - minSize);
+  const safeValue = typeof value === "number" && Number.isFinite(value) ? value : 0;
+  const safeMin = Number.isFinite(min) ? min : 0;
+  const safeMax =
+    Number.isFinite(max) && max > safeMin ? max : safeMin + 1;
+  const normalized = (safeValue - safeMin) / (safeMax - safeMin);
+  const clamped = Math.max(0, Math.min(1, normalized));
+  return minSize + clamped * (maxSize - minSize);
 }
 
 // Format Number with Commas
