@@ -12,7 +12,7 @@ import type {
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
   process.env.NEXT_PUBLIC_API_BASE_URL ||
-  "https://checkmyphc-insights.onrender.com/api/v1";
+  "https://presight-gcc2.onrender.com/api/v1";
 
 // Create axios instance with default config
 const apiClient = axios.create({
@@ -106,15 +106,15 @@ export async function getAlertsFeed(
  * Fetch telecom advice for a PHC
  */
 export async function getTelecomAdvice(
-  phcId: string,
+  phcName: string,
   params?: ApiParams
-): Promise<TelecomAdvice> {
+): Promise<any> {
   try {
-    const response = await apiClient.get<TelecomAdvice>(
-      `/telecom-advice/${phcId}`,
-      { params }
+    const response = await apiClient.get<{ count: number; data: any[] }>(
+      `/telecom-advice`,
+      { params: { ...params, name: phcName } }
     );
-    return response.data;
+    return response.data; // Return full response with count and data
   } catch (error) {
     console.error("Error fetching telecom advice:", error);
     throw handleApiError(error);
@@ -128,10 +128,10 @@ export async function getResourceWarnings(
   params?: ApiParams
 ): Promise<any[]> {
   try {
-    const response = await apiClient.get<any[]>("/resource-warnings", {
+    const response = await apiClient.get<{ count: number; data: any[] }>("/resource-warnings", {
       params,
     });
-    return response.data;
+    return response.data.data; // Extract data array from response
   } catch (error) {
     console.error("Error fetching resource warnings:", error);
     throw handleApiError(error);
@@ -143,8 +143,8 @@ export async function getResourceWarnings(
  */
 export async function getMetricsSummary(params?: ApiParams): Promise<any> {
   try {
-    const response = await apiClient.get<any>("/metrics-summary", { params });
-    return response.data;
+    const response = await apiClient.get<{ count: number; data: any[] }>("/metrics-summary", { params });
+    return response.data; // Return full response with count and data
   } catch (error) {
     console.error("Error fetching metrics summary:", error);
     throw handleApiError(error);
