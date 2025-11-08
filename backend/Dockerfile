@@ -18,11 +18,18 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY app ./app
 
+# Copy data and outputs directories (required for insights)
+COPY data ./data
+COPY outputs ./outputs
+
 # Create logs directory
 RUN mkdir -p logs
 
 # Create non-root user for security
-RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
+RUN useradd -m -u 1000 appuser && \
+    chown -R appuser:appuser /app && \
+    chmod -R 755 /app/data /app/outputs
+
 USER appuser
 
 # Expose port

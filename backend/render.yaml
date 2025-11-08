@@ -13,9 +13,9 @@ services:
       - key: PORT
         value: 8000
       - key: OUTPUT_DIR
-        value: /data/outputs
+        value: outputs
       - key: DATA_DIR
-        value: /data/source
+        value: data
       - key: CORS_ORIGINS
         value: "*"  # IMPORTANT: Change to your frontend URL(s) in production!
       - key: LOG_LEVEL
