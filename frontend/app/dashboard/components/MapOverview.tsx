@@ -47,33 +47,47 @@ export default function MapOverview() {
       ).addTo(map.current);
     }
 
-    // Clear existing markers
-    markersRef.current.forEach((marker) => marker.remove());
-    markersRef.current.clear();
+      // Clear existing markers
+      markersRef.current.forEach((marker) => marker.remove());
+      markersRef.current.clear();
 
-    if (!phcs || phcs.length === 0) return;
+      const phcList = Array.isArray(phcs) ? (phcs as PHC[]) : [];
 
-    // Geocode PHCs
-    const geocodedPHCs = geocodePHCs(phcs);
+      if (phcList.length === 0) return;
 
-    // Add markers
-    geocodedPHCs.forEach((phc) => {
-      const color = determineMarkerColor(phc);
-      const size = calculateMarkerSize(phc.shortage_score || phc.underserved_index, 24);
+      // Geocode PHCs
+      const geocodedPHCs = geocodePHCs(phcList);
 
-      const customIcon = L.divIcon({
-        html: createMarkerHTML(color, size),
-        className: "custom-marker",
-        iconSize: [size, size],
-      });
+      // Add markers
+      geocodedPHCs.forEach((phc) => {
+        if (typeof phc.lat !== "number" || typeof phc.lon !== "number") {
+          return;
+        }
 
-      const marker = L.marker([phc.lat, phc.lon], { icon: customIcon }).addTo(map.current!);
+        const color = determineMarkerColor(phc);
+        const shortageScore =
+          typeof phc.shortage_score === "number" ? phc.shortage_score : 0;
+        const underservedIndex =
+          typeof phc.underserved_index === "number" ? phc.underserved_index : 0;
+        const markerScore = shortageScore > 0 ? shortageScore : underservedIndex;
+        const maxScore = shortageScore > 0 ? 3 : 1;
+        const size = calculateMarkerSize(markerScore, 0, maxScore || 1);
 
-      const phcName = normalizePHCName(phc);
-      const lga = normalizePHCLGA(phc);
-      const state = normalizePHCState(phc);
+        const customIcon = L.divIcon({
+          html: createMarkerHTML(phc, color, size),
+          className: "custom-marker",
+          iconSize: [size, size],
+        });
 
-      const popupContent = `
+        const marker = L.marker([phc.lat, phc.lon], { icon: customIcon }).addTo(
+          map.current!
+        );
+
+        const phcName = normalizePHCName(phc);
+        const lga = normalizePHCLGA(phc);
+        const state = normalizePHCState(phc);
+
+        const popupContent = `
         <div style="min-width: 280px; font-family: system-ui, -apple-system, sans-serif; padding: 4px;">
           <h3 style="margin: 0 0 12px 0; font-weight: 700; font-size: 16px; color: #111827;">${phcName}</h3>
           <div style="margin: 8px 0; padding: 8px; background: #F3F4F6; border-radius: 6px; font-size: 13px;">
@@ -94,31 +108,36 @@ export default function MapOverview() {
         </div>
       `;
 
-      marker.bindPopup(popupContent, { maxWidth: 320 });
+        marker.bindPopup(popupContent, { maxWidth: 320 });
 
-      // Handle button clicks in popup
-      marker.on("popupopen", () => {
-        const buttons = document.querySelectorAll(".map-btn");
-        buttons.forEach((btn) => {
-          btn.addEventListener("click", async (e) => {
-            const target = e.target as HTMLElement;
-            const phcData = target.getAttribute("data-phc");
-            const alertType = target.getAttribute("data-type") as "outbreak" | "resource" | "underserved";
-            
-            if (phcData && alertType) {
-              const phcObj: PHC = JSON.parse(phcData);
-              try {
-                await sendAlert(phcObj, alertType);
-                toast.success(`Simulated ${alertType} alert sent to ${normalizePHCName(phcObj)}`);
-              } catch (error) {
-                toast.error("Failed to send alert");
+        // Handle button clicks in popup
+        marker.on("popupopen", () => {
+          const buttons = document.querySelectorAll(".map-btn");
+          buttons.forEach((btn) => {
+            btn.addEventListener("click", async (e) => {
+              const target = e.target as HTMLElement;
+              const phcData = target.getAttribute("data-phc");
+              const alertType = target.getAttribute("data-type") as
+                | "outbreak"
+                | "resource"
+                | "underserved";
+
+              if (phcData && alertType) {
+                const phcObj: PHC = JSON.parse(phcData);
+                try {
+                  await sendAlert(phcObj, alertType);
+                  toast.success(
+                    `Simulated ${alertType} alert sent to ${normalizePHCName(phcObj)}`
+                  );
+                } catch (error) {
+                  toast.error("Failed to send alert");
+                }
               }
-            }
+            });
           });
         });
-      });
 
-      markersRef.current.set(phc.id || phcName, marker);
+        markersRef.current.set(phc.id || phcName.toLowerCase(), marker);
     });
 
     // Fit bounds to markers
@@ -126,7 +145,7 @@ export default function MapOverview() {
       const bounds = L.latLngBounds(geocodedPHCs.map((p) => [p.lat, p.lon]));
       map.current?.fitBounds(bounds, { padding: [50, 50] });
     }
-  }, [mounted, phcs, sendAlert]);
+    }, [mounted, phcs, sendAlert]);
 
   if (!mounted) {
     return (

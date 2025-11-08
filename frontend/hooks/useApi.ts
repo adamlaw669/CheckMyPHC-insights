@@ -15,7 +15,12 @@ import {
   getTelecomAdvice,
 } from "../lib/apiClient";
 import { loadSimulatedAlerts } from "../lib/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import {
+  normalizeOutbreakAlerts,
+  normalizeUnderservedResponse,
+  normalizeAlertsFeed,
+} from "../lib/apiClient";
 
 // Import mock data as fallback
 import mockOutbreakAlerts from "../mocks/sample_outbreak_alerts.json";
@@ -27,7 +32,7 @@ import mockUnderserved from "../mocks/sample_underserved_phcs.json";
 export function useOutbreakAlerts(params: ApiParams = {}) {
   const [useMock, setUseMock] = useState(false);
   
-  const { data, error, isLoading, mutate: refetch } = useSWR<OutbreakAlert[], ApiError>(
+  const { data, error, isLoading, mutate: refetch } = useSWR<OutbreakAlert[] | unknown, ApiError>(
     ["outbreakAlerts", params],
     () => getOutbreakAlerts(params),
     {
@@ -40,8 +45,18 @@ export function useOutbreakAlerts(params: ApiParams = {}) {
     }
   );
   
+  const normalizedData = useMemo(
+    () => normalizeOutbreakAlerts(data),
+    [data]
+  );
+
+  const fallbackData = useMemo(
+    () => normalizeOutbreakAlerts(mockOutbreakAlerts as unknown),
+    []
+  );
+
   // Use mock data if API fails
-  const finalData = useMock || error ? (mockOutbreakAlerts as OutbreakAlert[]) : data;
+  const finalData = useMock || error ? fallbackData : normalizedData;
   
   return {
     data: finalData,
@@ -58,7 +73,7 @@ export function useOutbreakAlerts(params: ApiParams = {}) {
 export function useUnderserved(params: ApiParams = {}) {
   const [useMock, setUseMock] = useState(false);
   
-  const { data, error, isLoading, mutate: refetch } = useSWR<UnderservedResponse, ApiError>(
+  const { data, error, isLoading, mutate: refetch } = useSWR<UnderservedResponse | unknown, ApiError>(
     ["underserved", params],
     () => getUnderserved(params),
     {
@@ -71,8 +86,18 @@ export function useUnderserved(params: ApiParams = {}) {
     }
   );
   
+  const normalizedData = useMemo(
+    () => (data ? normalizeUnderservedResponse(data) : undefined),
+    [data]
+  );
+
+  const fallbackData = useMemo(
+    () => normalizeUnderservedResponse(mockUnderserved as unknown),
+    []
+  );
+
   // Use mock data if API fails
-  const finalData = useMock || error ? (mockUnderserved as UnderservedResponse) : data;
+  const finalData = useMock || error ? fallbackData : normalizedData;
   
   return {
     data: finalData,
@@ -90,7 +115,7 @@ export function useAlertsFeed(params: ApiParams = {}) {
   const [useMock, setUseMock] = useState(false);
   const [simulatedAlerts, setSimulatedAlerts] = useState<any[]>([]);
   
-  const { data, error, isLoading, mutate: refetch } = useSWR<AlertFeedItem[], ApiError>(
+  const { data, error, isLoading, mutate: refetch } = useSWR<AlertFeedItem[] | unknown, ApiError>(
     ["alertsFeed", params],
     () => getAlertsFeed(params),
     {
@@ -125,33 +150,38 @@ export function useAlertsFeed(params: ApiParams = {}) {
     };
   }, []);
   
-  // Merge API data with simulated alerts
-  const mergedData = data
-    ? [
-        ...simulatedAlerts.map((alert) => ({
+  const normalizedApiAlerts = useMemo(
+    () => normalizeAlertsFeed(data),
+    [data]
+  );
+
+  const simulatedFeed = useMemo(
+    () =>
+      simulatedAlerts.map((alert) => {
+        const type = (alert.alert_type || alert.type || "outbreak").toString().toLowerCase();
+        return {
           id: alert.id,
           phc: alert.phc_name,
           phcName: alert.phc_name,
-          type: alert.type,
-          level: "High" as const,
+          phc_name: alert.phc_name,
+          lga: alert.phc_lga,
+          state: alert.phc_state,
+          type,
+          alert_type: type,
+          level: alert.level || "High",
           message: alert.message,
           timestamp: alert.timestamp,
           simulated: true,
-          channel: alert.channel,
-        })),
-        ...data,
-      ]
-    : simulatedAlerts.map((alert) => ({
-        id: alert.id,
-        phc: alert.phc_name,
-        phcName: alert.phc_name,
-        type: alert.type,
-        level: "High" as const,
-        message: alert.message,
-        timestamp: alert.timestamp,
-        simulated: true,
-        channel: alert.channel,
-      }));
+          channel: alert.channel || "Simulated",
+        } satisfies AlertFeedItem;
+      }),
+    [simulatedAlerts]
+  );
+
+  const finalAlerts = useMock || error ? [] : normalizedApiAlerts;
+
+  // Merge API data with simulated alerts
+  const mergedData = [...simulatedFeed, ...finalAlerts];
   
   return {
     data: mergedData,

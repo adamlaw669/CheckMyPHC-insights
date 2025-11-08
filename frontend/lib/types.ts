@@ -1,7 +1,8 @@
 // PHC (Primary Health Center) Types
 export interface PHC {
-  id: string;
+  id?: string;
   name?: string;
+  display_name?: string;
   "Name of Primary Health Center"?: string;
   "PHC Name"?: string;
   "PHC LGA"?: string;
@@ -19,6 +20,7 @@ export interface PHC {
   resource_risk_score?: number;
   malaria_cases?: number;
   previous_cases?: number;
+  displayName?: string;
   maternal_visits?: number;
   drug_stock_level?: number;
   staff_count?: number;
@@ -30,49 +32,68 @@ export interface PHC {
 export interface OutbreakAlert extends PHC {
   id: string;
   name: string;
-  malaria_cases: number;
-  previous_cases: number;
-  shortage_score: number;
-  alert_level: string;
+  display_name?: string;
+  malaria_cases?: number;
+  previous_cases?: number;
+  shortage_score?: number;
+  alert_level?: string;
 }
 
 // Underserved Response Types
+export interface TopUnderservedPHC {
+  name: string;
+  display_name: string;
+  underserved_index: number;
+}
+
 export interface UnderservedResponse {
   summary: {
-    total_phcs: number;
-    top_n: number;
-    state_filter: string;
+    avg_underserved_index: number;
+    top_underserved_phcs: TopUnderservedPHC[];
   };
+  count: number;
   data: PHC[];
 }
 
 // Alert Feed Item Types
 export interface AlertFeedItem {
   id: string;
-  phc_id: string;
-  phc_name: string;
-  phc_lga: string;
-  phc_state: string;
-  alert_type: string;
-  severity: "low" | "medium" | "high" | "critical";
-  message: string;
+  phc?: string;
+  phcName?: string;
+  phc_id?: string;
+  phc_name?: string;
+  display_name?: string;
+  lga?: string;
+  phc_lga?: string;
+  state?: string;
+  phc_state?: string;
+  type: string;
+  alert_type?: string;
+  level?: string;
+  score?: number;
+  severity?: "low" | "medium" | "high" | "critical";
+  message?: string;
   timestamp: string;
   read?: boolean;
   lat?: number;
   lon?: number;
+  channel?: string;
+  simulated?: boolean;
 }
 
 // Simulated Alert Types
 export interface SimulatedAlert {
   id: string;
-  phc_id: string;
+  phc_id?: string;
   phc_name: string;
-  phc_lga: string;
-  phc_state: string;
+  phc_lga?: string;
+  phc_state?: string;
   alert_type: "outbreak" | "resource" | "underserved";
+  type?: "outbreak" | "resource" | "underserved";
   severity: "low" | "medium" | "high" | "critical";
   message: string;
   timestamp: string;
+  channel?: string;
 }
 
 // API Parameters
