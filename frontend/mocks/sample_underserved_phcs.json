@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "total_phcs": 8,
+    "top_n": 10,
+    "state_filter": ""
+  },
+  "data": [
+    {
+      "id": "phc_004",
+      "name": "Kano Central PHC",
+      "Name of Primary Health Center": "Kano Central PHC",
+      "PHC LGA": "Kano Municipal",
+      "State of PHC": "Kano",
+      "underserved_index": 0.88,
+      "underserved_flag": true,
+      "resource_risk_score": 0.92,
+      "population_served": 35000,
+      "staff_count": 2,
+      "drug_stock_level": 12
+    },
+    {
+      "id": "phc_008",
+      "name": "Kaduna South PHC",
+      "Name of Primary Health Center": "Kaduna South PHC",
+      "PHC LGA": "Kaduna South",
+      "State of PHC": "Kaduna",
+      "underserved_index": 0.76,
+      "underserved_flag": true,
+      "resource_risk_score": 0.82,
+      "population_served": 24000,
+      "staff_count": 3,
+      "drug_stock_level": 22
+    },
+    {
+      "id": "phc_001",
+      "name": "Garki Primary Health Center",
+      "Name of Primary Health Center": "Garki Primary Health Center",
+      "PHC LGA": "Abuja Municipal",
+      "State of PHC": "FCT",
+      "underserved_index": 0.72,
+      "underserved_flag": true,
+      "resource_risk_score": 0.85,
+      "population_served": 15000,
+      "staff_count": 3,
+      "drug_stock_level": 25
+    },
+    {
+      "id": "phc_003",
+      "name": "Ikeja Primary Health Center",
+      "Name of Primary Health Center": "Ikeja Primary Health Center",
+      "PHC LGA": "Ikeja",
+      "State of PHC": "Lagos",
+      "underserved_index": 0.68,
+      "underserved_flag": true,
+      "resource_risk_score": 0.78,
+      "population_served": 22000,
+      "staff_count": 4,
+      "drug_stock_level": 18
+    },
+    {
+      "id": "phc_006",
+      "name": "Ibadan North PHC",
+      "Name of Primary Health Center": "Ibadan North PHC",
+      "PHC LGA": "Ibadan North",
+      "State of PHC": "Oyo",
+      "underserved_index": 0.65,
+      "underserved_flag": true,
+      "resource_risk_score": 0.71,
+      "population_served": 18000,
+      "staff_count": 4,
+      "drug_stock_level": 28
+    }
+  ]
+}

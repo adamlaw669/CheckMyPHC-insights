@@ -1,0 +1,22 @@
+[
+  {"lga": "Abuja Municipal", "state": "FCT", "lat": 9.0579, "lon": 7.4951},
+  {"lga": "Ikeja", "state": "Lagos", "lat": 6.5964, "lon": 3.3486},
+  {"lga": "Surulere", "state": "Lagos", "lat": 6.5027, "lon": 3.3600},
+  {"lga": "Kano Municipal", "state": "Kano", "lat": 12.0022, "lon": 8.5919},
+  {"lga": "Port Harcourt", "state": "Rivers", "lat": 4.8156, "lon": 7.0498},
+  {"lga": "Ibadan North", "state": "Oyo", "lat": 7.3775, "lon": 3.9470},
+  {"lga": "Enugu East", "state": "Enugu", "lat": 6.4474, "lon": 7.5248},
+  {"lga": "Kaduna South", "state": "Kaduna", "lat": 10.5105, "lon": 7.4165},
+  {"lga": "Aba North", "state": "Abia", "lat": 5.1167, "lon": 7.3667},
+  {"lga": "Benin City", "state": "Edo", "lat": 6.3350, "lon": 5.6037},
+  {"lga": "Jos North", "state": "Plateau", "lat": 9.9167, "lon": 8.8833},
+  {"lga": "Maiduguri", "state": "Borno", "lat": 11.8333, "lon": 13.1500},
+  {"lga": "Warri", "state": "Delta", "lat": 5.5167, "lon": 5.7500},
+  {"lga": "Calabar", "state": "Cross River", "lat": 4.9517, "lon": 8.3417},
+  {"lga": "Akure", "state": "Ondo", "lat": 7.2500, "lon": 5.2000},
+  {"lga": "Owerri", "state": "Imo", "lat": 5.4833, "lon": 7.0333},
+  {"lga": "Yola", "state": "Adamawa", "lat": 9.2000, "lon": 12.4833},
+  {"lga": "Sokoto", "state": "Sokoto", "lat": 13.0622, "lon": 5.2339},
+  {"lga": "Makurdi", "state": "Benue", "lat": 7.7333, "lon": 8.5333},
+  {"lga": "Ilorin", "state": "Kwara", "lat": 8.4966, "lon": 4.5425}
+]
