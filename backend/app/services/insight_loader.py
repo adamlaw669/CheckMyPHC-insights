@@ -14,6 +14,113 @@ import logging
 logger = logging.getLogger("app")
 
 
+ALERT_LEVEL_CANONICAL = {
+    "low": "Low",
+    "medium": "Medium",
+    "med": "Medium",
+    "moderate": "Medium",
+    "high": "High",
+    "very high": "High",
+    "critical": "High",
+    "severe": "High",
+}
+
+
+def _first_non_empty(record: Dict, keys: List[str], default: str = "") -> str:
+    """
+    Return the first non-empty value found in `record` for the given keys.
+
+    Args:
+        record: Source dictionary
+        keys: Candidate keys to inspect (in priority order)
+        default: Value to return when no key has a value
+    """
+    for key in keys:
+        if key in record:
+            value = record.get(key)
+            if value is None:
+                continue
+            if isinstance(value, str):
+                cleaned = value.strip()
+                if cleaned:
+                    return cleaned
+            else:
+                return value
+    return default
+
+
+def _normalize_state_name(state_value: str) -> str:
+    """Normalize state names removing trailing 'state' and standardising casing."""
+    if not state_value:
+        return ""
+
+    cleaned = str(state_value).strip()
+    lower_cleaned = cleaned.lower()
+
+    if lower_cleaned.startswith("state of "):
+        cleaned = cleaned[len("state of ") :]
+        lower_cleaned = cleaned.lower()
+
+    if lower_cleaned.endswith(" state"):
+        cleaned = cleaned[: -len(" state")]
+
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+
+    if not cleaned:
+        return ""
+
+    # Preserve common acronyms
+    if cleaned.upper() in {"FCT", "F.C.T."}:
+        return "FCT"
+
+    return cleaned.title()
+
+
+def _normalize_lga_name(lga_value: str) -> str:
+    """Normalize LGA names by trimming whitespace and standardising casing."""
+    if not lga_value:
+        return ""
+
+    cleaned = str(lga_value).strip()
+    cleaned = re.sub(r"\s+", " ", cleaned)
+
+    if not cleaned:
+        return ""
+
+    return cleaned.title()
+
+
+def _coerce_shortage_score(value) -> float:
+    """Safely convert shortage score values to float."""
+    if value is None or (isinstance(value, str) and not value.strip()):
+        return 0.0
+
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        logger.debug(f"Unable to parse shortage score '{value}', defaulting to 0")
+        return 0.0
+
+
+def _resolve_alert_level(raw_level, shortage_score: float) -> str:
+    """
+    Normalize alert level strings to Low/Medium/High.
+
+    Falls back to shortage_score bands when level is missing or unrecognised.
+    """
+    if isinstance(raw_level, str):
+        normalized = raw_level.strip().lower()
+        if normalized in ALERT_LEVEL_CANONICAL:
+            return ALERT_LEVEL_CANONICAL[normalized]
+
+    # Derive from shortage score as fallback
+    if shortage_score >= 3:
+        return "High"
+    if shortage_score >= 2:
+        return "Medium"
+    return "Low"
+
+
 class DataLoadCache:
     """Simple cache for loaded data with timestamp-based expiry."""
 
@@ -126,16 +233,61 @@ def load_outbreak_alerts(output_dir: str, refresh: bool = False) -> List[Dict]:
     normalized_records = []
     for record in data:
         try:
-            original_name = record.get("phc_name", record.get("name", ""))
+            name_candidates = [
+                "phc_name",
+                "name",
+                "Name of Primary Health Center",
+                "Name of Primary Health Centre",
+                "Primary Health Center",
+                "Primary Health Centre",
+            ]
+            original_name = _first_non_empty(record, name_candidates)
+
+            if not original_name:
+                logger.debug(
+                    "Skipping outbreak alert record with no recognizable PHC name keys"
+                )
+                continue
+
             normalized_name = normalize_phc_name(original_name)
+
+            lga_raw = _first_non_empty(record, ["lga", "LGA", "PHC LGA"])
+            state_raw = _first_non_empty(
+                record, ["state", "State", "State of PHC", "state_of_phc"]
+            )
+            shortage_score_value = _coerce_shortage_score(
+                _first_non_empty(
+                    record,
+                    [
+                        "shortage_score",
+                        "shortage score",
+                        "Shortage Score",
+                        "shortageScore",
+                    ],
+                    default="0",
+                )
+            )
+
+            alert_level_raw = _first_non_empty(
+                record,
+                [
+                    "alert_level",
+                    "Alert Level",
+                    "alertLevel",
+                    "shortage_level",
+                    "Shortage Level",
+                ],
+            )
 
             normalized_record = {
                 "name": normalized_name,
                 "display_name": get_display_name(original_name),
-                "lga": record.get("lga", ""),
-                "state": record.get("state", ""),
-                "shortage_score": int(record.get("shortage_score", 0)),
-                "alert_level": record.get("alert_level", "Low"),
+                "lga": _normalize_lga_name(lga_raw),
+                "state": _normalize_state_name(state_raw),
+                "shortage_score": max(0, int(round(shortage_score_value))),
+                "alert_level": _resolve_alert_level(
+                    alert_level_raw, shortage_score_value
+                ),
             }
             normalized_records.append(normalized_record)
         except (KeyError, ValueError) as e:

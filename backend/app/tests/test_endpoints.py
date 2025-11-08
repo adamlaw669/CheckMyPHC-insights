@@ -9,8 +9,13 @@ Tests all four main endpoints with various scenarios including:
 - Telecom advice with preferred channels
 """
 
+import json
+
 import pytest
 from fastapi.testclient import TestClient
+
+from app.core.config import settings
+from app.services.insight_loader import clear_cache
 
 
 class TestHealthEndpoints:
@@ -144,6 +149,59 @@ class TestOutbreakAlertsEndpoint:
         # Validate types
         assert isinstance(record["shortage_score"], int)
         assert record["alert_level"] in ["Low", "Medium", "High"]
+
+    def test_outbreak_alerts_normalizes_raw_records(
+        self, client: TestClient, tmp_path, monkeypatch
+    ):
+        """Ensure loader normalizes raw outbreak files with inconsistent schema."""
+        raw_records = [
+            {
+                "Name of Primary Health Center": "Kunini Primary Health Centre",
+                "PHC LGA": "  ardo kola ",
+                "State of PHC": "Taraba State",
+                "shortage_score": "3",
+                "alert_level": "Unknown",
+            },
+            {
+                "Name of Primary Health Center": "Rigasa Primary Health Center",
+                "PHC LGA": "igabi",
+                "state": "kaduna state",
+                "shortage score": 2,
+                "alertLevel": "medium",
+            },
+        ]
+
+        output_dir = tmp_path / "outputs"
+        output_dir.mkdir()
+        (output_dir / "outbreak_alerts.json").write_text(json.dumps(raw_records))
+
+        # Override settings to point to the temporary directory for this test
+        monkeypatch.setattr(settings, "OUTPUT_DIR", str(output_dir))
+        clear_cache()
+
+        response = client.get("/api/v1/outbreak-alerts")
+        assert response.status_code == 200
+        data = response.json()
+
+        assert data["count"] == 2
+        high_alert = data["data"][0]
+        medium_alert = data["data"][1]
+
+        # High alert derived from shortage score fallback
+        assert high_alert["name"] == "kunini primary health centre"
+        assert high_alert["display_name"] == "Kunini Primary Health Centre"
+        assert high_alert["lga"] == "Ardo Kola"
+        assert high_alert["state"] == "Taraba"
+        assert high_alert["shortage_score"] == 3
+        assert high_alert["alert_level"] == "High"
+
+        # Medium alert respects provided alert level and normalizes casing
+        assert medium_alert["alert_level"] == "Medium"
+        assert medium_alert["state"] == "Kaduna"
+        assert medium_alert["lga"] == "Igabi"
+        assert medium_alert["shortage_score"] == 2
+
+        clear_cache()
 
 
 class TestUnderservedEndpoint:
