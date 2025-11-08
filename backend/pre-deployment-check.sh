@@ -59,42 +59,42 @@ echo ""
 
 # 3. Check data directories
 echo "3. Checking data directories..."
-if [ -d "../Backend/Outputs" ]; then
-    check_passed "../Backend/Outputs/ directory exists"
+if [ -d "outputs" ]; then
+    check_passed "outputs/ directory exists"
     
     # Check for required JSON files
-    if [ -f "../Backend/Outputs/outbreak_alerts.json" ]; then
+    if [ -f "outputs/outbreak_alerts.json" ]; then
         check_passed "outbreak_alerts.json found"
     else
         check_warning "outbreak_alerts.json not found (may cause runtime errors)"
     fi
     
-    if [ -f "../Backend/Outputs/underserved_phcs.json" ]; then
+    if [ -f "outputs/underserved_phcs.json" ]; then
         check_passed "underserved_phcs.json found"
     else
         check_warning "underserved_phcs.json not found (may cause runtime errors)"
     fi
     
-    if [ -f "../Backend/Outputs/resource_warnings.json" ]; then
+    if [ -f "outputs/resource_warnings.json" ]; then
         check_passed "resource_warnings.json found"
     else
         check_warning "resource_warnings.json not found (may cause runtime errors)"
     fi
 else
-    check_warning "../Backend/Outputs/ directory not found"
+    check_warning "outputs/ directory not found"
     echo "   You'll need to configure data storage on Render"
 fi
 
-if [ -d "../Backend/Data" ]; then
-    check_passed "../Backend/Data/ directory exists"
+if [ -d "data" ]; then
+    check_passed "data/ directory exists"
     
-    if [ -f "../Backend/Data/telecommunication.csv" ]; then
+    if [ -f "data/telecommunication.csv" ]; then
         check_passed "telecommunication.csv found"
     else
         check_warning "telecommunication.csv not found (may cause runtime errors)"
     fi
 else
-    check_warning "../Backend/Data/ directory not found"
+    check_warning "data/ directory not found"
     echo "   You'll need to configure data storage on Render"
 fi
 echo ""

@@ -16,9 +16,9 @@ services:
       - PORT=${PORT:-8000}
       - DEBUG=${DEBUG:-False}
     volumes:
-      # Mount data directories from parent
-      - ../Backend/Outputs:/data/outputs:ro
-      - ../Backend/Data:/data/source:ro
+      # Mount data directories
+      - ./outputs:/data/outputs:ro
+      - ./data:/data/source:ro
       # Mount logs directory for persistence
       - ./logs:/app/logs
     restart: unless-stopped

@@ -118,8 +118,8 @@ docker build -t checkmyphc-backend .
 
 ```bash
 docker run -p 8000:8000 \
-  -v $(pwd)/../Backend/Outputs:/data/outputs:ro \
-  -v $(pwd)/../Backend/Data:/data/source:ro \
+  -v $(pwd)/outputs:/data/outputs:ro \
+  -v $(pwd)/data:/data/source:ro \
   -e OUTPUT_DIR=/data/outputs \
   -e DATA_DIR=/data/source \
   checkmyphc-backend
@@ -362,8 +362,8 @@ Configure the application using environment variables. Copy `.env.example` to `.
 
 ```bash
 # Data directories (relative or absolute paths)
-OUTPUT_DIR=../Backend/Outputs
-DATA_DIR=../Backend/Data
+OUTPUT_DIR=outputs
+DATA_DIR=data
 
 # CORS configuration (comma-separated origins, or * for all)
 CORS_ORIGINS=*
@@ -380,8 +380,8 @@ DEBUG=False
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `OUTPUT_DIR` | `../Backend/Outputs` | Directory containing insight engine outputs |
-| `DATA_DIR` | `../Backend/Data` | Directory containing source data files |
+| `OUTPUT_DIR` | `outputs` | Directory containing insight engine outputs |
+| `DATA_DIR` | `data` | Directory containing source data files |
 | `CORS_ORIGINS` | `*` | Allowed CORS origins (use specific URLs in production) |
 | `LOG_LEVEL` | `INFO` | Logging level (DEBUG, INFO, WARNING, ERROR) |
 | `PORT` | `8000` | Server port |
