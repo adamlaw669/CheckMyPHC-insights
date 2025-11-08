@@ -4,13 +4,20 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
-venv/
-.venv/
-ENV/
 *.egg-info/
 dist/
 build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Testing
 .pytest_cache/
@@ -18,24 +25,8 @@ build/
 htmlcov/
 .tox/
 
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-logs/
+# Logs (but keep directory structure)
 *.log
-
-# Environment
-.env
-.env.local
 
 # Git
 .git/
@@ -43,12 +34,23 @@ logs/
 
 # Documentation
 *.md
-docs/
+!README.md
 
-# CI/CD
-.github/
+# Environment files with secrets
+.env.local
+.env.*.local
 
-# Docker
-Dockerfile
-docker-compose.yml
-.dockerignore
+# Jupyter notebooks (use insight_engine.py instead)
+*.ipynb
+.ipynb_checkpoints/
+
+# Cleanup scripts and raw data
+cleanup-consolidating/
+data/unconsolidated/
+
+# Keep these important files:
+# !data/
+# !outputs/
+# !requirements.txt
+# !Dockerfile
+# !docker-compose.yml
