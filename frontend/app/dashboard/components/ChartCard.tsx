@@ -14,7 +14,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
-import { PHCS, DRUG_STOCKS } from "@/lib/mockData"
+import { PHCS, DRUG_STOCKS } from "../../../lib/mockData"
 
 interface ChartCardProps {
   type: "bar" | "line" | "pie"

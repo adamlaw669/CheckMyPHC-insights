@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import SmartActionPanel from '@/app/dashboard/components/SmartActionPanel'
-import { AlertProvider } from '@/contexts/AlertContext'
+import SmartActionPanel from '../../app/dashboard/components/SmartActionPanel'
+import { AlertProvider } from '../../contexts/AlertContext'
 
 describe('SmartActionPanel', () => {
   it('renders empty state when no alert is selected', () => {

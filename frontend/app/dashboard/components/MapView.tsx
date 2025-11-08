@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import L from "leaflet"
-import { PHCS } from "@/lib/mockData"
-import type { PHC } from "@/lib/types" // Declare PHC type
+import { PHCS } from "../../../lib/mockData"
+import type { PHC } from "../../../lib/types" // Declare PHC type
 import {
   detectOutbreaks,
   rankUnderserved,
@@ -11,7 +11,7 @@ import {
   getTelecomAdvice,
   sendAlert,
   underservedIndex,
-} from "@/lib/insightEngine"
+} from "../../../lib/insightEngine"
 
 export default function MapView() {
   const mapContainer = useRef<HTMLDivElement>(null)

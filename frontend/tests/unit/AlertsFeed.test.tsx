@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import AlertsFeedNew from '@/app/dashboard/components/AlertsFeedNew'
-import { AlertProvider } from '@/contexts/AlertContext'
+import AlertsFeedNew from '../../app/dashboard/components/AlertsFeedNew'
+import { AlertProvider } from '../../contexts/AlertContext'
 
 // Mock the hooks
-jest.mock('@/hooks/useApi', () => ({
+jest.mock('../../hooks/useApi', () => ({
   useAlertsFeed: jest.fn(() => ({
     data: [
       {

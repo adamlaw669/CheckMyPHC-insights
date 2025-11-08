@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import MapOverview from '@/app/dashboard/components/MapOverview'
-import { AlertProvider } from '@/contexts/AlertContext'
+import MapOverview from '../../app/dashboard/components/MapOverview'
+import { AlertProvider } from '../../contexts/AlertContext'
 
 // Mock the hooks
-jest.mock('@/hooks/useApi', () => ({
+jest.mock('../../hooks/useApi', () => ({
   useOutbreakAlerts: jest.fn(() => ({
     data: [
       {

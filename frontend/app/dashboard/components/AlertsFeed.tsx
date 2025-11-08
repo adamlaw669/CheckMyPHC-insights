@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getAlerts } from "@/lib/insightEngine"
-import type { AlertItem } from "@/lib/mockData"
+import { getAlerts } from "../../../lib/insightEngine"
+import type { AlertItem } from "../../../lib/types"
 
 interface AlertsFeedProps {
   isCompact?: boolean

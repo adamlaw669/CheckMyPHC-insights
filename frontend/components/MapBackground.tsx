@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import L from "leaflet"
-import { useOutbreakAlerts } from "@/hooks/useApi"
-import { geocodePHCs } from "@/lib/mapHelpers"
+import { useOutbreakAlerts } from "../hooks/useApi"
+import { geocodePHCs } from "../lib/mapHelpers"
 
 export default function MapBackground() {
   const mapContainer = useRef<HTMLDivElement>(null)

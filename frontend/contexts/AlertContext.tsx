@@ -1,8 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
-import type { PHC, SimulatedAlert, AlertFeedItem } from "@/lib/types";
-import { loadSimulatedAlerts, sendSimulatedAlert } from "@/lib/utils";
+import type { PHC, SimulatedAlert, AlertFeedItem } from "../lib/types";
+import { loadSimulatedAlerts, sendSimulatedAlert } from "../lib/utils";
 
 interface AlertContextType {
   selectedAlert: AlertFeedItem | null;

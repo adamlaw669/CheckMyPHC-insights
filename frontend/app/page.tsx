@@ -3,9 +3,9 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
-import FlyingAlert from "@/components/FlyingAlert"
+import FlyingAlert from "../components/FlyingAlert"
 
-const MapBackground = dynamic(() => import("@/components/MapBackground"), { ssr: false })
+const MapBackground = dynamic(() => import("../components/MapBackground"), { ssr: false })
 
 export default function LandingPage() {
   const [flyingAlerts, setFlyingAlerts] = useState<{ id: string; type: string }[]>([])

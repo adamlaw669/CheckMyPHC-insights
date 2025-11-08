@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { useAlertsFeed } from "@/hooks/useApi"
-import type { AlertFeedItem } from "@/lib/types"
+import { useAlertsFeed } from "../../hooks/useApi"
+import type { AlertFeedItem } from "../../lib/types"
 
 export default function AlertsPage() {
   const router = useRouter()

@@ -3,16 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useOutbreakAlerts } from "@/hooks/useApi";
-import { useAlertContext } from "@/contexts/AlertContext";
+import { useOutbreakAlerts } from "../../../hooks/useApi";
+import { useAlertContext } from "../../../contexts/AlertContext";
 import {
   geocodePHCs,
   NIGERIA_BOUNDS,
   determineMarkerColor,
   createMarkerHTML,
-} from "@/lib/mapHelpers";
-import { normalizePHCName, normalizePHCLGA, normalizePHCState, calculateMarkerSize } from "@/lib/utils";
-import type { PHC } from "@/lib/types";
+} from "../../../lib/mapHelpers";
+import { normalizePHCName, normalizePHCLGA, normalizePHCState, calculateMarkerSize } from "../../../lib/utils";
+import type { PHC } from "../../../lib/types";
 import { toast } from "sonner";
 
 export default function MapOverview() {

@@ -1,21 +1,21 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useAlertsFeed } from "@/hooks/useApi";
-import { useAlertContext } from "@/contexts/AlertContext";
+import { useAlertsFeed } from "../../../hooks/useApi";
+import { useAlertContext } from "../../../contexts/AlertContext";
 import {
   getAlertTypeIcon,
   getAlertTypeColor,
   formatTimestamp,
   normalizePHCName,
   debounce,
-} from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { ScrollArea } from "@/components/ui/scroll-area";
+} from "../../../lib/utils";
+import { Input } from "../../../components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select";
+import { Badge } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
+import { Skeleton } from "../../../components/ui/skeleton";
+import { ScrollArea } from "../../../components/ui/scroll-area";
 
 interface AlertsFeedNewProps {
   isCompact?: boolean;
