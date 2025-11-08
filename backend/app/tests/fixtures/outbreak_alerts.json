@@ -1,0 +1,37 @@
+[
+  {
+    "phc_name": "Ikeja Central PHC",
+    "lga": "Ikeja",
+    "state": "Lagos",
+    "shortage_score": 3,
+    "alert_level": "High"
+  },
+  {
+    "phc_name": "Aba North PHC",
+    "lga": "Aba North",
+    "state": "Abia",
+    "shortage_score": 2,
+    "alert_level": "Medium"
+  },
+  {
+    "phc_name": "Jalingo Central PHC",
+    "lga": "Jalingo",
+    "state": "Taraba",
+    "shortage_score": 4,
+    "alert_level": "High"
+  },
+  {
+    "phc_name": "Wukari PHC",
+    "lga": "Wukari",
+    "state": "Taraba",
+    "shortage_score": 1,
+    "alert_level": "Low"
+  },
+  {
+    "phc_name": "Yola South PHC",
+    "lga": "Yola South",
+    "state": "Adamawa",
+    "shortage_score": 2,
+    "alert_level": "Medium"
+  }
+]

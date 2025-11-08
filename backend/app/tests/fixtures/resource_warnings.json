@@ -1,0 +1,30 @@
+[
+  {
+    "phc_name": "Ikeja Central PHC",
+    "lga": "Ikeja",
+    "state": "Lagos",
+    "resource_risk_score": 8.5,
+    "resource_alert": "High"
+  },
+  {
+    "phc_name": "Jalingo Central PHC",
+    "lga": "Jalingo",
+    "state": "Taraba",
+    "resource_risk_score": 6.2,
+    "resource_alert": "Medium"
+  },
+  {
+    "phc_name": "Wukari PHC",
+    "lga": "Wukari",
+    "state": "Taraba",
+    "resource_risk_score": 3.1,
+    "resource_alert": "Low"
+  },
+  {
+    "phc_name": "Remote Village PHC",
+    "lga": "Ardo Kola",
+    "state": "Taraba",
+    "resource_risk_score": 9.2,
+    "resource_alert": "High"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "phc_name": "Remote Village PHC",
+    "lga": "Ardo Kola",
+    "state": "Taraba",
+    "underserved_index": 0.95,
+    "underserved_flag": true
+  },
+  {
+    "phc_name": "Takum District PHC",
+    "lga": "Takum",
+    "state": "Taraba",
+    "underserved_index": 0.82,
+    "underserved_flag": true
+  },
+  {
+    "phc_name": "Gassol PHC",
+    "lga": "Gassol",
+    "state": "Taraba",
+    "underserved_index": 0.73,
+    "underserved_flag": true
+  },
+  {
+    "phc_name": "Bali Town PHC",
+    "lga": "Bali",
+    "state": "Taraba",
+    "underserved_index": 0.45,
+    "underserved_flag": true
+  },
+  {
+    "phc_name": "Donga PHC",
+    "lga": "Donga",
+    "state": "Taraba",
+    "underserved_index": 0.38,
+    "underserved_flag": false
+  },
+  {
+    "phc_name": "Jalingo Model PHC",
+    "lga": "Jalingo",
+    "state": "Taraba",
+    "underserved_index": 0.22,
+    "underserved_flag": false
+  }
+]
