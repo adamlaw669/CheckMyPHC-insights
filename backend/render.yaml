@@ -3,7 +3,7 @@ services:
     name: checkmyphc-backend
     env: docker
     dockerfilePath: ./Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     region: oregon  # Options: oregon, frankfurt, singapore, ohio
     plan: free  # Options: free, starter, standard, pro
     branch: main  # Change to your default branch name if different
