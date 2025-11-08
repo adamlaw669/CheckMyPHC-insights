@@ -1,12 +1,12 @@
 "use client";
 
-import { useUnderserved } from "@/hooks/useApi";
-import { normalizePHCName, normalizePHCLGA, normalizePHCState, exportToCSV } from "@/lib/utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useUnderserved } from "../../../hooks/useApi";
+import { normalizePHCName, normalizePHCLGA, normalizePHCState, exportToCSV } from "../../../lib/utils";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
+import { Button } from "../../../components/ui/button";
+import { Badge } from "../../../components/ui/badge";
+import { Skeleton } from "../../../components/ui/skeleton";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../components/ui/table";
 import { Download, TrendingUp } from "lucide-react";
 
 export default function RankingsPanel() {

@@ -7,19 +7,19 @@ import type {
   AlertFeedItem,
   ApiParams,
   ApiError,
-} from "@/lib/types";
+} from "../lib/types";
 import {
   getOutbreakAlerts,
   getUnderserved,
   getAlertsFeed,
   getTelecomAdvice,
-} from "@/lib/apiClient";
-import { loadSimulatedAlerts } from "@/lib/utils";
+} from "../lib/apiClient";
+import { loadSimulatedAlerts } from "../lib/utils";
 import { useEffect, useState } from "react";
 
 // Import mock data as fallback
-import mockOutbreakAlerts from "@/mocks/sample_outbreak_alerts.json";
-import mockUnderserved from "@/mocks/sample_underserved_phcs.json";
+import mockOutbreakAlerts from "../mocks/sample_outbreak_alerts.json";
+import mockUnderserved from "../mocks/sample_underserved_phcs.json";
 
 /**
  * Hook to fetch outbreak alerts with SWR

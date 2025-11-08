@@ -2,11 +2,11 @@
 
 import { useMemo } from "react";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { useOutbreakAlerts } from "@/hooks/useApi";
-import { normalizePHCName } from "@/lib/utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useOutbreakAlerts } from "../../../hooks/useApi";
+import { normalizePHCName } from "../../../lib/utils";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
+import { Skeleton } from "../../../components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs";
 
 export default function TrendsPanel() {
   const { data: phcs, isLoading } = useOutbreakAlerts();

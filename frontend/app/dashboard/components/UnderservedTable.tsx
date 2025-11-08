@@ -1,6 +1,6 @@
 "use client"
 
-import { rankUnderserved } from "@/lib/insightEngine"
+import { rankUnderserved } from "../../../lib/insightEngine"
 
 export default function UnderservedTable() {
   const underserved = rankUnderserved()

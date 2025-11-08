@@ -9,7 +9,7 @@ import AlertsFeed from "./AlertsFeed"
 import UnderservedTable from "./UnderservedTable"
 import CapacityCard from "./CapacityCard"
 import dynamic from "next/dynamic"
-import { getDashboardMetrics } from "@/lib/insightEngine"
+import { getDashboardMetrics } from "../../../lib/insightEngine"
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false })
 

@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { useAlertContext } from "@/contexts/AlertContext";
-import { normalizePHCName, normalizePHCLGA, normalizePHCState, formatTimestamp } from "@/lib/utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
+import { useAlertContext } from "../../../contexts/AlertContext";
+import { normalizePHCName, normalizePHCLGA, normalizePHCState, formatTimestamp } from "../../../lib/utils";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card";
+import { Button } from "../../../components/ui/button";
+import { Badge } from "../../../components/ui/badge";
+import { ScrollArea } from "../../../components/ui/scroll-area";
+import { Separator } from "../../../components/ui/separator";
 import { MessageSquare, Phone, Mail, Megaphone, Trash2, Activity } from "lucide-react";
 import { toast } from "sonner";
-import type { PHC } from "@/lib/types";
+import type { PHC } from "../../../lib/types";
 
 export default function SmartActionPanel() {
   const { selectedAlert, simulatedAlerts, clearAlerts } = useAlertContext();
