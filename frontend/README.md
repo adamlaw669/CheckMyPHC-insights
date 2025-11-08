@@ -1,271 +1,345 @@
-# CheckMyPHC Insights
+# CheckMyPHC Insights - Frontend Dashboard
 
-A real-time PHC (Primary Health Centers) intelligence dashboard built with Next.js 15, TypeScript, and React-Leaflet. Designed for hackathon-ready demo purposes with a focus on outbreak detection, resource monitoring, and telecommunication optimization for healthcare centers across Nigeria.
+A modern, production-ready Next.js dashboard for monitoring and managing Primary Health Centers (PHCs) across Nigeria. Built with real-time data, AI-driven insights, and telecom-aware alert simulation.
 
-## Features
+## 🚀 Features
 
-- **Real-time Outbreak Detection**: Automatic anomaly detection based on malaria case trends
-- **Interactive Map**: React-Leaflet powered map with color-coded PHC markers (red for outbreaks, orange for underserved, green for normal)
-- **Analytics Dashboard**: Comprehensive charts showing malaria cases, maternal visits, and drug stock distribution
-- **Alerts Management**: Create, monitor, and resolve alerts with real-time updates
-- **User Authentication**: Demo-mode auth using localStorage (email/password)
-- **Responsive Design**: Mobile-first layout that scales across all devices
-- **Simulated Backend**: Mock data engine ready for FastAPI swap
+- **Interactive Map**: Leaflet-powered map showing PHC locations with color-coded markers based on alert severity
+- **Real-time Alerts Feed**: Live-updating feed with filters, search, and simulated alert tracking
+- **Analytics Dashboard**: Trends visualization, risk scores, and alert distribution charts
+- **Smart Action Panel**: Telecom-aware alert simulation with channel selection (SMS, WhatsApp, Email)
+- **Rankings Panel**: Top underserved PHCs with CSV export for reporting
+- **Mock Data Fallback**: Automatic fallback to mock data if API is unavailable
+- **Responsive Design**: Mobile-first, fully responsive across all devices
+- **Accessible**: WCAG AA compliant with keyboard navigation and ARIA labels
 
-## Tech Stack
+## 📋 Prerequisites
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **Maps**: React-Leaflet (Leaflet.js)
-- **Charts**: Recharts
-- **Authentication**: localStorage-based (demo only)
+- Node.js 18+ and npm/pnpm
+- Modern browser with ES6+ support
 
-## Quick Start
+## 🛠️ Installation
 
-### Prerequisites
+```bash
+# Clone the repository
+cd frontend
 
-- Node.js 18+
-- pnpm (or npm)
+# Install dependencies
+npm install --legacy-peer-deps
 
-### Installation
+# Copy environment variables
+cp .env.example .env
 
-\`\`\`bash
-git clone <repository-url>
-cd checkmyphc-insights
-pnpm install
-\`\`\`
+# Edit .env if needed (default uses production API)
+```
 
-### Run Development Server
+## 🏃 Running Locally
 
-\`\`\`bash
-pnpm dev
-\`\`\`
+### Development Mode
+
+```bash
+npm run dev
+```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## User Flow
+### Production Build
 
-1. **Landing Page** → Click "Try Demo"
-2. **Signup** → Create account (stored in localStorage)
-3. **Login** → Authenticate with credentials
-4. **Dashboard** → View metrics, map, and charts
-5. **Alerts** → Monitor and manage all alerts
-6. **Logout** → Sign out and return to landing
+```bash
+# Build for production
+npm run build
 
-## Project Structure
+# Start production server
+npm run start
+```
 
-\`\`\`
-checkmyphc-insights/
-├── app/
-│   ├── layout.tsx                 # Root layout with Leaflet CSS
-│   ├── globals.css                # Tailwind + design tokens
-│   ├── page.tsx                   # Landing page
-│   ├── login/page.tsx             # Login form
-│   ├── signup/page.tsx            # Signup form
+## 🧪 Testing
+
+### Unit Tests
+
+```bash
+# Run all unit tests
+npm test
+
+# Watch mode for development
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+```
+
+### E2E Tests
+
+```bash
+# Install Playwright browsers (first time only)
+npx playwright install
+
+# Run E2E tests
+npm run test:e2e
+
+# Run E2E tests with UI
+npm run test:e2e:ui
+```
+
+## 📁 Project Structure
+
+```
+frontend/
+├── app/                          # Next.js app router
 │   ├── dashboard/
-│   │   ├── page.tsx               # Dashboard page (protected)
-│   │   └── components/
-│   │       ├── DashboardLayout.tsx      # Main dashboard shell
-│   │       ├── MapView.tsx             # Leaflet map
-│   │       ├── MetricCard.tsx          # KPI cards
-│   │       ├── ChartCard.tsx           # Recharts
-│   │       └── AlertsFeed.tsx          # Alert list
-│   └── alerts/page.tsx            # Full alerts center (protected)
-├── lib/
-│   ├── mockData.ts                # PHC data + alert shapes
-│   └── insightEngine.ts           # Detection + alert functions
-└── public/
-    └── [assets]
-\`\`\`
+│   │   ├── components/          # Dashboard components
+│   │   │   ├── MapOverview.tsx           # Interactive map
+│   │   │   ├── AlertsFeedNew.tsx         # Alerts feed with filters
+│   │   │   ├── TrendsPanel.tsx           # Analytics charts
+│   │   │   ├── RankingsPanel.tsx         # Underserved PHC rankings
+│   │   │   ├── SmartActionPanel.tsx      # Alert actions
+│   │   │   └── DashboardLayoutNew.tsx    # Main layout
+│   │   └── page.tsx             # Dashboard entry point
+│   ├── login/                   # Login page
+│   ├── signup/                  # Signup page
+│   └── layout.tsx               # Root layout
+├── lib/                         # Core utilities
+│   ├── apiClient.ts            # API client with retry logic
+│   ├── types.ts                # TypeScript interfaces
+│   ├── utils.ts                # Helper functions
+│   └── mapHelpers.ts           # Map utilities
+├── hooks/                       # Custom React hooks
+│   └── useApi.ts               # SWR data fetching hooks
+├── contexts/                    # React contexts
+│   └── AlertContext.tsx        # Alert state management
+├── mocks/                       # Mock data for fallback
+│   ├── sample_outbreak_alerts.json
+│   ├── sample_underserved_phcs.json
+│   ├── sample_resource_warnings.json
+│   └── lga_centroids.json      # LGA geocoding data
+├── tests/                       # Test files
+│   ├── unit/                   # Unit tests
+│   └── e2e/                    # E2E tests
+├── components/                  # Reusable UI components
+│   └── ui/                     # shadcn/ui components
+└── public/                      # Static assets
+```
 
-## Key Files & Their Purpose
+## 🔌 API Integration
 
-### `/lib/mockData.ts`
-Defines PHC types and mock dataset. Replace with API calls to real FastAPI backend:
+### Base URL
 
-\`\`\`typescript
-// Current: Local array
-export const PHCS: PHC[] = [...]
+```
+https://presight.onrender.com/api/v1
+```
 
-// Future: API call
-// export async function getPHCs() {
-//   const res = await fetch('/api/phcs');
-//   return res.json();
-// }
-\`\`\`
+### Endpoints Used
 
-### `/lib/insightEngine.ts`
-Outbreak detection, underserved ranking, and alert management. All functions are ready to swap for backend API calls:
+1. **GET /outbreak-alerts**
+   - Query params: `limit`, `offset`, `state`, `lga`, `level`
+   - Returns: Array of PHC outbreak alerts
 
-\`\`\`typescript
-// Current: Local logic
-export function detectOutbreaks(thresholdPct = 30): OutbreakAlert[] { ... }
+2. **GET /underserved**
+   - Query params: `top_n`, `state`
+   - Returns: Top underserved PHCs with metrics
 
-// Future: API call
-// export async function detectOutbreaks() {
-//   const res = await fetch('/api/outbreak-alerts');
-//   return res.json();
-// }
-\`\`\`
+3. **GET /alerts-feed**
+   - Query params: `limit`, `types`, `state`
+   - Returns: Aggregated alerts feed
 
-### `/app/dashboard/components/MapView.tsx`
-Interactive Leaflet map showing PHC locations with color-coded alerts. Marker colors indicate:
-- **Red (#DC2626)**: Outbreak detected
-- **Orange (#F59E0B)**: Underserved PHC (top 20%)
-- **Green (#10B981)**: Normal status
+4. **GET /telecom-advice**
+   - Query params: `name` (PHC name)
+   - Returns: Preferred communication channel
 
-### Authentication
-- Signup stores user to `localStorage.users`
-- Login validates and sets `localStorage.sessionUser`
-- Protected pages check `sessionUser` and redirect to login if not found
-- Logout clears `sessionUser`
+### Mock Data Fallback
 
-**⚠️ Security Note**: This demo stores passwords in localStorage. For production, use proper authentication (JWT, OAuth, etc.) with secure backend storage.
+If the API is unavailable, the dashboard automatically uses mock data from the `mocks/` directory. A yellow banner indicates when mock data is in use.
 
-## Real-time Simulation
+## 🎯 Key Components
 
-The dashboard refreshes data every 10 seconds to simulate backend updates:
+### MapOverview
 
-\`\`\`typescript
-// In AlertsFeed.tsx and MapView.tsx
-const interval = setInterval(() => {
-  // Refresh alerts and markers
-}, 10000);
-\`\`\`
+Interactive Leaflet map with:
+- Color-coded markers (Red=High alert, Amber=Medium, Green=Low)
+- Click to view PHC details
+- Send alert buttons in popup
+- Auto-clustering for dense areas
 
-## Marker Colors & Logic
+### AlertsFeedNew
 
-Markers prioritize alerts based on severity:
+Real-time alerts feed with:
+- Search by PHC, LGA, or State
+- Filter by alert type and state
+- Simulated alerts tracking
+- Clickable alerts for Smart Actions
 
-1. **Outbreak Alert** (30%+ case increase) → RED
-2. **Underserved** (top 20% by infrastructure/inclusivity/service) → ORANGE
-3. **Normal** → GREEN
+### TrendsPanel
 
-Popup shows:
-- PHC name and LGA
-- Current vs. previous malaria cases
-- Telecom strength (2G/3G/4G)
-- "Send Alert" button to trigger outbreak notification
+Analytics with Recharts:
+- Top 5 PHCs by risk score
+- Alert trends over time
+- Distribution by alert level
 
-## Charts & Visualizations
+### RankingsPanel
 
-- **Bar Chart**: Malaria cases by top PHCs
-- **Line Chart**: Maternal visits trend
-- **Pie Chart**: Drug stock distribution
+Underserved PHCs table:
+- Top 10 ranking
+- Export to CSV
+- Sortable columns
 
-All charts use Recharts and update with simulated data refresh.
+### SmartActionPanel
 
-## API Endpoints (for FastAPI Integration)
+Alert management:
+- Suggested actions based on alert type
+- Telecom-aware channel selection
+- Alert log with localStorage persistence
 
-Replace local `lib/insightEngine.ts` functions with these endpoints:
-
-\`\`\`
-GET  /api/phcs                    # Get all PHCs
-GET  /api/outbreak-alerts         # Detect outbreaks
-GET  /api/underserved             # Rank underserved PHCs
-GET  /api/alerts-feed             # Get all alerts
-GET  /api/telecom-advice          # Get telecom recommendations
-POST /api/send-alert              # Create alert
-PATCH /api/alerts/:id/resolve     # Mark alert resolved
-GET  /api/dashboard-metrics       # Get summary metrics
-\`\`\`
-
-## Mobile Responsiveness
-
-- Landing page: Full-screen hero
-- Dashboard: Single-column on mobile, multi-column on tablet/desktop
-- Map: Full-width on all screens
-- Alerts: Compact on mobile, full layout on desktop
-
-## Testing the Demo
-
-### Demo Credentials
-
-Create a new account or use:
-- Email: demo@example.com
-- Password: demo123
-
-### Features to Test
-
-1. **Signup & Login**: Create account, verify localStorage, login
-2. **Dashboard**: Check metrics, view map, interact with markers
-3. **Send Alert**: Click map marker popup "Send Alert" button
-4. **Alerts Page**: View all alerts, filter by status, mark resolved
-5. **Real-time Updates**: Wait 10s to see map/alert changes
-6. **Logout**: Clear session and redirect to login
-
-## Performance Notes
-
-- **Leaflet Map**: Optimized with `dynamic(() => import(...), { ssr: false })`
-- **Charts**: Lazy-loaded on dashboard
-- **Marker Clustering**: Can be added with `react-leaflet-markercluster` for 50+ markers
-- **Max Zoom**: Limited to 12 for performance
-
-## Known Limitations
-
-- Passwords stored in plain text (localStorage demo only)
-- No real database persistence
-- Markers reload on every data refresh (can optimize with state management)
-- No export/reporting features yet
-
-## Future Enhancements
-
-- [ ] Real FastAPI backend integration
-- [ ] User roles (admin, health worker, supervisor)
-- [ ] Map marker clustering
-- [ ] Historical data charts
-- [ ] Export reports (PDF/CSV)
-- [ ] SMS/WhatsApp notifications (via telecom advice)
-- [ ] Data caching with SWR
-- [ ] Dark mode toggle
-
-## Deployment
-
-### Deploy to Vercel
-
-\`\`\`bash
-vercel
-\`\`\`
+## 🔧 Configuration
 
 ### Environment Variables
 
-None required for demo mode. For production:
+Create a `.env` file (see `.env.example`):
 
-\`\`\`env
-NEXT_PUBLIC_API_URL=https://your-fastapi-backend.com
-DATABASE_URL=your-db-url
-\`\`\`
+```bash
+# API Configuration
+NEXT_PUBLIC_API_BASE=https://presight.onrender.com/api/v1
 
-## Development Tips
+# Map Tile URL
+NEXT_PUBLIC_MAP_TILE_URL=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+```
 
-- **Edit mock data**: `/lib/mockData.ts`
-- **Adjust detection logic**: `/lib/insightEngine.ts`
-- **Customize styling**: `/app/globals.css` (design tokens)
-- **Add new pages**: Create in `/app/[route]/page.tsx`
-- **Add components**: Create in `/app/[route]/components/`
+### Changing API Base URL
 
-## Troubleshooting
+Edit `.env` or set the environment variable:
 
-### Map not rendering?
-- Ensure Leaflet CSS is linked in `app/layout.tsx`
-- Check browser console for errors
-- Verify MapView component is dynamically imported with `ssr: false`
+```bash
+export NEXT_PUBLIC_API_BASE=https://your-api-url.com/api/v1
+```
 
-### Alerts not updating?
-- Check localStorage for alerts
-- Verify interval is running (check Network tab)
-- Clear cache and hard refresh
+## 📊 Data Flow
 
-### Login not working?
-- Verify user exists in `localStorage.users`
-- Check email/password match exactly
-- Open DevTools → Application → Local Storage
+1. **Data Fetching**: SWR hooks (`useApi.ts`) fetch data with caching and auto-revalidation
+2. **State Management**: AlertContext provides shared state for selected alerts
+3. **Mock Fallback**: If API fails, hooks automatically use mock data
+4. **Simulated Alerts**: Stored in localStorage and merged with API alerts
 
-## License
+## 🎨 Styling
 
-Hackathon Demo - 2025
+- **Tailwind CSS**: Utility-first CSS framework
+- **shadcn/ui**: Accessible component library
+- **Responsive**: Mobile-first with breakpoints at sm, md, lg, xl
 
-## Support
+## 🚢 Deployment
 
-For issues or questions, check the code comments or reach out to the development team.
+### Vercel (Recommended)
+
+```bash
+# Deploy to Vercel
+vercel
+
+# Or connect GitHub repo to Vercel for auto-deployment
+```
+
+### Docker
+
+```bash
+# Build Docker image
+docker build -t checkmyphc-frontend .
+
+# Run container
+docker run -p 3000:3000 -e NEXT_PUBLIC_API_BASE=https://presight.onrender.com/api/v1 checkmyphc-frontend
+```
+
+### Environment Variables on Deploy
+
+Make sure to set:
+- `NEXT_PUBLIC_API_BASE`
+- `NEXT_PUBLIC_MAP_TILE_URL` (optional)
+
+## 🐛 Troubleshooting
+
+### Issue: Map not loading
+
+**Solution**: Ensure you're using a client-side component with `"use client"` and dynamic import:
+
+```tsx
+const MapOverview = dynamic(() => import('./MapOverview'), { ssr: false })
+```
+
+### Issue: API returning 404
+
+**Solution**: The dashboard will automatically use mock data. Check:
+1. Backend is deployed and running
+2. API base URL is correct in `.env`
+3. Endpoint paths match backend routes
+
+### Issue: Simulated alerts not persisting
+
+**Solution**: Check localStorage is enabled in browser. Clear localStorage if corrupt:
+
+```javascript
+localStorage.removeItem('simulatedAlerts')
+```
+
+### Issue: Tests failing
+
+**Solution**: Run tests with proper setup:
+
+```bash
+# Unit tests
+npm test -- --clearCache
+npm test
+
+# E2E tests
+npx playwright install
+npm run test:e2e
+```
+
+## 📈 Performance
+
+- **Code Splitting**: Dynamic imports for heavy components (Map, Charts)
+- **Memoization**: React.memo and useMemo for expensive computations
+- **SWR Caching**: Intelligent caching and revalidation
+- **Lazy Loading**: Images and components load on demand
+
+## 🔐 Security
+
+- No sensitive data in frontend
+- API keys server-side only
+- Input sanitization for search and filters
+- CORS handled by backend
+
+## 📝 Next Improvements
+
+For pitch deck and future roadmap:
+
+1. **Offline Sync**: Service workers for offline functionality
+2. **User Authentication**: Role-based access control (admin, viewer, coordinator)
+3. **SMS Gateway Integration**: Real SMS/WhatsApp sending via Twilio/AfricasTalking
+4. **Advanced Analytics**: Predictive models, trend forecasting
+5. **Multi-language**: Support for local languages (Hausa, Yoruba, Igbo)
+6. **Mobile App**: React Native version for field workers
+7. **Push Notifications**: Browser push for critical alerts
+8. **Report Builder**: Custom PDF/Excel report generation
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+## 👥 Team
+
+Built by Team CheckMyPHC for Nigeria PHC Intelligence
+
+## 📞 Support
+
+For issues or questions:
+- Create an issue on GitHub
+- Email: support@checkmyphc.com
+- Docs: https://docs.checkmyphc.com
+
+---
+
+**Built with ❤️ for Nigeria's Healthcare**

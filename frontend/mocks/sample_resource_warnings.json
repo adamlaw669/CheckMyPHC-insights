@@ -1,0 +1,42 @@
+[
+  {
+    "id": "phc_001",
+    "name": "Garki Primary Health Center",
+    "PHC LGA": "Abuja Municipal",
+    "State of PHC": "FCT",
+    "resource_risk_score": 0.85,
+    "warning_type": "Drug Shortage",
+    "severity": "High",
+    "drug_stock_level": 25
+  },
+  {
+    "id": "phc_003",
+    "name": "Ikeja Primary Health Center",
+    "PHC LGA": "Ikeja",
+    "State of PHC": "Lagos",
+    "resource_risk_score": 0.78,
+    "warning_type": "Drug Shortage",
+    "severity": "High",
+    "drug_stock_level": 18
+  },
+  {
+    "id": "phc_004",
+    "name": "Kano Central PHC",
+    "PHC LGA": "Kano Municipal",
+    "State of PHC": "Kano",
+    "resource_risk_score": 0.92,
+    "warning_type": "Critical Drug Shortage",
+    "severity": "Critical",
+    "drug_stock_level": 12
+  },
+  {
+    "id": "phc_008",
+    "name": "Kaduna South PHC",
+    "PHC LGA": "Kaduna South",
+    "State of PHC": "Kaduna",
+    "resource_risk_score": 0.82,
+    "warning_type": "Drug Shortage",
+    "severity": "High",
+    "drug_stock_level": 22
+  }
+]

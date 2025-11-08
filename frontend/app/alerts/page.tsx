@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { getAlerts, markAlertResolved } from "@/lib/insightEngine"
-import type { AlertItem } from "@/lib/mockData"
+import { useAlertsFeed } from "@/hooks/useApi"
+import type { AlertFeedItem } from "@/lib/types"
 
 export default function AlertsPage() {
   const router = useRouter()
-  const [alerts, setAlerts] = useState<AlertItem[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [filter, setFilter] = useState<"all" | "active" | "resolved">("active")
+  const { data: alerts = [], isLoading } = useAlertsFeed()
+  const [filter, setFilter] = useState<"all" | "active">("active")
+  const [resolvedAlerts, setResolvedAlerts] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     const sessionUser = localStorage.getItem("sessionUser")
@@ -19,38 +19,28 @@ export default function AlertsPage() {
       return
     }
 
-    const loadAlerts = () => {
-      setAlerts(getAlerts())
-      setIsLoading(false)
-    }
-
-    loadAlerts()
-
-    const interval = setInterval(loadAlerts, 8000)
-
-    const handleAlertsUpdated = () => {
-      loadAlerts()
-    }
-
-    window.addEventListener("alertsUpdated", handleAlertsUpdated)
-
-    return () => {
-      clearInterval(interval)
-      window.removeEventListener("alertsUpdated", handleAlertsUpdated)
+    // Load resolved alerts from localStorage
+    const stored = localStorage.getItem("resolvedAlerts")
+    if (stored) {
+      try {
+        setResolvedAlerts(new Set(JSON.parse(stored)))
+      } catch (e) {
+        console.error("Failed to load resolved alerts", e)
+      }
     }
   }, [router])
 
   const handleMarkResolved = (alertId: string) => {
-    markAlertResolved(alertId)
-    setAlerts(getAlerts())
+    const newResolved = new Set(resolvedAlerts)
+    newResolved.add(alertId)
+    setResolvedAlerts(newResolved)
+    localStorage.setItem("resolvedAlerts", JSON.stringify(Array.from(newResolved)))
   }
 
   const getFilteredAlerts = () => {
     switch (filter) {
       case "active":
-        return alerts.filter((a) => !a.resolved)
-      case "resolved":
-        return alerts.filter((a) => a.resolved)
+        return alerts.filter((a) => !resolvedAlerts.has(a.id || ""))
       default:
         return alerts
     }
@@ -125,7 +115,7 @@ export default function AlertsPage() {
 
         {/* Filter Tabs */}
         <div className="flex gap-2 mb-6 border-b border-border">
-          {(["all", "active", "resolved"] as const).map((tab) => (
+          {(["all", "active"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setFilter(tab)}
@@ -140,9 +130,7 @@ export default function AlertsPage() {
                 (
                 {filter === "all"
                   ? alerts.length
-                  : filter === "active"
-                    ? alerts.filter((a) => !a.resolved).length
-                    : alerts.filter((a) => a.resolved).length}
+                  : alerts.filter((a) => !resolvedAlerts.has(a.id || "")).length}
                 )
               </span>
             </button>
@@ -165,41 +153,49 @@ export default function AlertsPage() {
           </div>
         ) : (
           <div className="space-y-3">
-            {filteredAlerts.map((alert) => (
-              <div key={alert.id} className={`border rounded-2xl p-4 ${getAlertColor(alert.type)}`}>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-4 flex-1">
-                    <span className="text-3xl">{getAlertIcon(alert.type)}</span>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className={`text-xs font-semibold px-2 py-1 rounded ${getAlertBadgeColor(alert.type)}`}>
-                          {alert.type.toUpperCase()}
-                        </span>
-                        {alert.resolved && (
-                          <span className="text-xs font-semibold px-2 py-1 rounded bg-success text-white">
-                            RESOLVED
+            {filteredAlerts.map((alert) => {
+              const isResolved = resolvedAlerts.has(alert.id || "")
+              return (
+                <div key={alert.id} className={`border rounded-2xl p-4 ${getAlertColor(alert.type || "")}`}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-4 flex-1">
+                      <span className="text-3xl">{getAlertIcon(alert.type || "")}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className={`text-xs font-semibold px-2 py-1 rounded ${getAlertBadgeColor(alert.type || "")}`}>
+                            {(alert.type || "").toUpperCase()}
                           </span>
-                        )}
+                          {isResolved && (
+                            <span className="text-xs font-semibold px-2 py-1 rounded bg-success text-white">
+                              RESOLVED
+                            </span>
+                          )}
+                          {alert.simulated && (
+                            <span className="text-xs font-semibold px-2 py-1 rounded bg-blue-500 text-white">
+                              SIMULATED
+                            </span>
+                          )}
+                        </div>
+                        <p className="font-semibold text-text-primary mb-1">{alert.message || `Alert from ${alert.phc || alert.phcName}`}</p>
+                        <p className="text-sm text-text-secondary">
+                          {alert.phc || alert.phcName} • {alert.lga} • {alert.state}
+                        </p>
+                        <p className="text-xs text-text-secondary mt-2">{alert.timestamp ? new Date(alert.timestamp).toLocaleString() : "N/A"}</p>
                       </div>
-                      <p className="font-semibold text-text-primary mb-1">{alert.message}</p>
-                      <p className="text-sm text-text-secondary">
-                        Alert ID: {alert.id} • PHC ID: {alert.phcId}
-                      </p>
-                      <p className="text-xs text-text-secondary mt-2">{new Date(alert.timestamp).toLocaleString()}</p>
                     </div>
-                  </div>
 
-                  {!alert.resolved && (
-                    <button
-                      onClick={() => handleMarkResolved(alert.id)}
-                      className="px-4 py-2 bg-success text-white rounded-lg hover:bg-green-700 transition-colors font-medium whitespace-nowrap text-sm"
-                    >
-                      Mark Resolved
-                    </button>
-                  )}
+                    {!isResolved && (
+                      <button
+                        onClick={() => handleMarkResolved(alert.id || "")}
+                        className="px-4 py-2 bg-success text-white rounded-lg hover:bg-green-700 transition-colors font-medium whitespace-nowrap text-sm"
+                      >
+                        Mark Resolved
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
       </main>

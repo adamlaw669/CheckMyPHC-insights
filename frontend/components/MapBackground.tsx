@@ -2,20 +2,21 @@
 
 import { useEffect, useRef, useState } from "react"
 import L from "leaflet"
-import { PHCS } from "@/lib/mockData"
-import { detectOutbreaks, rankUnderserved } from "@/lib/insightEngine"
+import { useOutbreakAlerts } from "@/hooks/useApi"
+import { geocodePHCs } from "@/lib/mapHelpers"
 
 export default function MapBackground() {
   const mapContainer = useRef<HTMLDivElement>(null)
   const map = useRef<L.Map | null>(null)
   const [mounted, setMounted] = useState(false)
+  const { data: phcs = [] } = useOutbreakAlerts()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   useEffect(() => {
-    if (!mounted || !mapContainer.current) return
+    if (!mounted || !mapContainer.current || phcs.length === 0) return
 
     // Initialize map
     if (!map.current) {
@@ -34,16 +35,16 @@ export default function MapBackground() {
       }).addTo(map.current)
     }
 
-    const outbreaks = detectOutbreaks()
-    const underserved = rankUnderserved()
+    // Geocode PHCs
+    const geocodedPHCs = geocodePHCs(phcs)
 
     // Add markers
-    PHCS.forEach((phc) => {
+    geocodedPHCs.forEach((phc) => {
       let color = "#10B981" // green
-      if (outbreaks.some((o) => o.phcId === phc.id)) {
+      if (phc.alert_level === "High") {
         color = "#DC2626" // red
-      } else if (underserved.some((u) => u.id === phc.id)) {
-        color = "#F59E0B" // orange
+      } else if (phc.alert_level === "Medium") {
+        color = "#F59E0B" // amber
       }
 
       const markerHtml = `
@@ -65,7 +66,7 @@ export default function MapBackground() {
 
       L.marker([phc.lat, phc.lon], { icon: customIcon }).addTo(map.current!)
     })
-  }, [mounted])
+  }, [mounted, phcs])
 
   if (!mounted) {
     return <div className="absolute inset-0 bg-gradient-to-br from-background to-primary/5" />
