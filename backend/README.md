@@ -145,6 +145,36 @@ docker-compose logs -f backend
 docker-compose down
 ```
 
+## ☁️ Cloud Deployment
+
+### Deploy to Render (Recommended)
+
+For detailed instructions on deploying to Render cloud platform:
+
+**Quick Start**: See [`RENDER_QUICK_START.md`](RENDER_QUICK_START.md) for 5-minute deployment
+
+**Full Guide**: See [`RENDER_DEPLOYMENT_GUIDE.md`](RENDER_DEPLOYMENT_GUIDE.md) for comprehensive instructions
+
+**Pre-Deployment Check**:
+```bash
+./pre-deployment-check.sh
+```
+
+**Key Features**:
+- ✅ Free tier available
+- ✅ Automatic HTTPS
+- ✅ Auto-deploy from GitHub
+- ✅ Built-in monitoring
+- ✅ Zero-downtime deployments
+
+**Quick Deploy Steps**:
+1. Push code to GitHub
+2. Connect repository to Render
+3. Configure environment variables
+4. Deploy!
+
+Your API will be live at: `https://your-service.onrender.com`
+
 ## 📡 API Endpoints
 
 ### Health Check

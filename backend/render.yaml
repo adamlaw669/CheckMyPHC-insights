@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: checkmyphc-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./backend
+    region: oregon  # Options: oregon, frankfurt, singapore, ohio
+    plan: free  # Options: free, starter, standard, pro
+    branch: main  # Change to your default branch name if different
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: OUTPUT_DIR
+        value: /data/outputs
+      - key: DATA_DIR
+        value: /data/source
+      - key: CORS_ORIGINS
+        value: "*"  # IMPORTANT: Change to your frontend URL(s) in production!
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DEBUG
+        value: "False"
