@@ -170,6 +170,50 @@ class TelecomAdviceResponse(BaseModel):
     )
 
 
+class ResourceWarningRecord(BaseModel):
+    """Single resource warning record."""
+
+    name: str = Field(..., description="Normalized PHC name")
+    display_name: str = Field(..., description="Display-friendly PHC name")
+    lga: str = Field(..., description="Local Government Area")
+    state: str = Field(..., description="State")
+    resource_risk_score: float = Field(..., description="Resource risk score", ge=0)
+    resource_alert: str = Field(
+        ..., description="Resource alert level", pattern="^(Low|Medium|High)$"
+    )
+
+
+class ResourceWarningsResponse(BaseModel):
+    """Response for resource warnings endpoint."""
+
+    count: int = Field(..., description="Number of records returned")
+    data: List[ResourceWarningRecord] = Field(
+        ..., description="List of resource warning records"
+    )
+
+
+class MetricsSummaryRecord(BaseModel):
+    """Single metrics summary record with all PHC data."""
+
+    name: str = Field(..., description="PHC name")
+    state: str = Field(..., description="State")
+    lga: str = Field(..., description="Local Government Area")
+    shortage_score: Optional[float] = Field(None, description="Shortage score")
+    mean_service_score: Optional[float] = Field(None, description="Mean service score")
+    underserved_index: Optional[float] = Field(None, description="Underserved index")
+    resource_risk_score: Optional[float] = Field(None, description="Resource risk score")
+    resource_alert: Optional[str] = Field(None, description="Resource alert level")
+
+
+class MetricsSummaryResponse(BaseModel):
+    """Response for metrics summary endpoint."""
+
+    count: int = Field(..., description="Total number of records")
+    data: List[MetricsSummaryRecord] = Field(
+        ..., description="List of all PHC metrics"
+    )
+
+
 class ErrorResponse(BaseModel):
     """Standard error response."""
 

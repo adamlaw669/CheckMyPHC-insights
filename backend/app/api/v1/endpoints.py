@@ -358,3 +358,156 @@ async def get_telecom_advice(
         raise HTTPException(
             status_code=500, detail=f"Error loading telecom advice: {e}"
         )
+
+
+@router.get(
+    "/resource-warnings",
+    response_model=schemas.ResourceWarningsResponse,
+    summary="Get resource warnings",
+    description="Returns PHCs with resource shortage warnings and risk scores.",
+)
+async def get_resource_warnings(
+    state: Optional[str] = Query(None, description="Filter by state"),
+    lga: Optional[str] = Query(None, description="Filter by LGA"),
+    level: Optional[str] = Query(
+        None, description="Filter by alert level (Low, Medium, High)"
+    ),
+    limit: int = Query(
+        100, ge=1, le=1000, description="Maximum number of records to return"
+    ),
+    offset: int = Query(0, ge=0, description="Starting offset for pagination"),
+    refresh: bool = Query(False, description="Force reload data from disk"),
+    settings: Settings = Depends(get_settings),
+):
+    """
+    Get resource warnings with optional filtering.
+
+    Returns PHCs with resource shortage warnings, sorted by risk score.
+    """
+    try:
+        # Load data
+        records = insight_loader.load_resource_warnings(
+            settings.OUTPUT_DIR, refresh=refresh
+        )
+
+        # Apply filters
+        if state:
+            records = utils.filter_by_state(records, state)
+        if lga:
+            records = utils.filter_by_lga(records, lga)
+        if level:
+            if level not in ["Low", "Medium", "High"]:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Invalid level. Must be Low, Medium, or High",
+                )
+            records = [r for r in records if r.get("resource_alert") == level]
+
+        # Sort by risk score
+        records = sorted(records, key=lambda x: x["resource_risk_score"], reverse=True)
+
+        # Get total count before pagination
+        total_count = len(records)
+
+        # Apply pagination
+        paginated_records = utils.paginate(records, limit, offset)
+
+        logger.info(
+            f"Returning {len(paginated_records)} resource warnings (total: {total_count})"
+        )
+
+        return schemas.ResourceWarningsResponse(
+            count=len(paginated_records),
+            data=paginated_records,
+        )
+
+    except FileNotFoundError as e:
+        logger.error(f"Data file not found: {e}")
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        logger.error(f"Data validation error: {e}")
+        raise HTTPException(status_code=500, detail=f"Invalid data structure: {e}")
+
+
+@router.get(
+    "/metrics-summary",
+    response_model=schemas.MetricsSummaryResponse,
+    summary="Get comprehensive metrics summary",
+    description="Returns comprehensive metrics for all PHCs from CSV data.",
+)
+async def get_metrics_summary(
+    state: Optional[str] = Query(None, description="Filter by state"),
+    lga: Optional[str] = Query(None, description="Filter by LGA"),
+    limit: int = Query(
+        100, ge=1, le=1000, description="Maximum number of records to return"
+    ),
+    offset: int = Query(0, ge=0, description="Starting offset for pagination"),
+    settings: Settings = Depends(get_settings),
+):
+    """
+    Get comprehensive metrics summary for all PHCs.
+
+    Returns data from the metrics_summary.csv file with all PHC metrics.
+    """
+    try:
+        import pandas as pd
+        from pathlib import Path
+
+        file_path = Path(settings.OUTPUT_DIR) / "metrics_summary.csv"
+
+        if not file_path.exists():
+            raise HTTPException(
+                status_code=404, detail=f"Metrics summary file not found: {file_path}"
+            )
+
+        logger.info(f"Loading metrics summary from {file_path}")
+
+        # Load CSV
+        df = pd.read_csv(file_path)
+
+        # Normalize column names
+        column_mapping = {
+            "Name of Primary Health Center": "name",
+            "PHC LGA": "lga",
+            "State of PHC": "state",
+            "shortage_score": "shortage_score",
+            "mean_service_score": "mean_service_score",
+            "underserved_index": "underserved_index",
+            "resource_risk_score": "resource_risk_score",
+            "resource_alert": "resource_alert",
+        }
+
+        df = df.rename(columns=column_mapping)
+
+        # Convert to records
+        records = df.to_dict("records")
+
+        # Apply filters
+        if state:
+            records = [r for r in records if r.get("state", "").lower() == state.lower()]
+        if lga:
+            records = [r for r in records if r.get("lga", "").lower() == lga.lower()]
+
+        # Get total count before pagination
+        total_count = len(records)
+
+        # Apply pagination
+        paginated_records = records[offset : offset + limit]
+
+        logger.info(
+            f"Returning {len(paginated_records)} metrics records (total: {total_count})"
+        )
+
+        return schemas.MetricsSummaryResponse(
+            count=len(paginated_records),
+            data=paginated_records,
+        )
+
+    except FileNotFoundError as e:
+        logger.error(f"Data file not found: {e}")
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        logger.error(f"Error loading metrics summary: {e}")
+        raise HTTPException(
+            status_code=500, detail=f"Error loading metrics summary: {e}"
+        )
