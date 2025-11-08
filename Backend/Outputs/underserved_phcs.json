@@ -1,0 +1,520 @@
+[
+  {
+    "Name of Primary Health Center":"abbare primary health centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4321428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"ali goro phcc",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.8714285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"anguwan dampar phcc",
+    "PHC LGA":"Ibi",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.3892857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"balasa agure maternity health centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4010714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"bali town primary health care center",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5242857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"bantaje phcc",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4321428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"barkin dutse primary health care center",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5814285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"bete primary health care center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7914285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"bitako phcc",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"borno-kuru-kuru",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5142857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"budong primary health clinic",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4578571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"chenchenji primary health center",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7728571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"costine primary health center",
+    "PHC LGA":"Ussa",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.8071428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"dankum primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4942857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"didango primary health care muri a ward karim lamido lga",
+    "PHC LGA":"Karim Lamido",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.565,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"dingding phcc",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7464285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"dutse primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7278571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"fada primary health clinic",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6457142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"first referral hospital sunkani",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6178571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"garin jatau phc",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6864285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"gayama primary health care center",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4353571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"high mammy primary health center.",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4971428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"hon imam primary healthcare centre jalingo",
+    "PHC LGA":"Jalingo",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.355,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"jenuwa gida primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6657142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"jimlari primary health care centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.3521428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"kajong primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7642857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"kakara primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6935714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"kankani primary health clinic",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.8285714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"karim jen ardido ward kodi dispensary primary health center",
+    "PHC LGA":"Karim Lamido",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.2785714286,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"kashimbila primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.1271428571,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"kasimbli primary health center. a opposite center mo- ques kasimbli",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba state",
+    "underserved_index":0.2128571429,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"kente primary health care center",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.1814285714,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"kpankufung primary health cente",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6232142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"kpankufung primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.2571428571,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"kunini primary health care center",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5803571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"kusuku primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7335714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"kwesati primary health center",
+    "PHC LGA":"USSA",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.67,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"laapo primary health care center",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7278571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"lagos buban health post",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7742857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"lamido borno primary health care center",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4964285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"lankaviri primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"lau primary health care centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5785714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"lekitaba primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7085714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"mayo ndaga primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"mayo-kam primary health care center",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5357142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"mutum-biyu primary healthcare centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.435,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"ndo(ando) idi phcc",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6835714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"negrah primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6085714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"nyita primary health care center",
+    "PHC LGA":"Gonga",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5228571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"old barade modern primary healthcare centre",
+    "PHC LGA":"Jalingo",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6921428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"pamanga primary health care centers",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5964285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"phcc sarki kudu ibi lga",
+    "PHC LGA":"Ibi",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7857142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"phcc zango kombi",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.4714285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"primary health care center mallum",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.2214285714,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"primary health care centre ardo kola",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7428571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"primary health care centre sibre",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.8328571429,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"primary health care rafin damisa dispensary.",
+    "PHC LGA":"Ibi",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7892857143,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"puje(wukari) phcc",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.3285714286,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"pupule primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7214285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"pwadzu",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5585714286,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"sabo gida primary health care centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7857142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"sahkaka primary health clinic",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.3557142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"sala duna dispensary primary health center",
+    "PHC LGA":"Karim Lamido",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6407142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"tasompo phcc",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.92,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"tunapo primary health care center",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.8371428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"wapan nghaku primary health care center",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7214285714,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"warwar primary health clinic",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.6821428571,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"wasabi health post",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.565,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"wuro ladde phcc",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.94,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"yarima primary healthcare centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.5007142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"yirom primary health center",
+    "PHC LGA":"Ussa",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.61,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"yitti primary health centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.7857142857,
+    "underserved_flag":0
+  },
+  {
+    "Name of Primary Health Center":"yorro lankaviri waru primary health center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.35,
+    "underserved_flag":1
+  },
+  {
+    "Name of Primary Health Center":"yorro manang boli sabo health center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "underserved_index":0.725,
+    "underserved_flag":0
+  }
+]

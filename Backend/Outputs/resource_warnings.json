@@ -1,0 +1,520 @@
+[
+  {
+    "Name of Primary Health Center":"abbare primary health centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.316,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"ali goro phcc",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":1.0,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"anguwan dampar phcc",
+    "PHC LGA":"Ibi",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.012,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"balasa agure maternity health centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.636,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"bali town primary health care center",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.4,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"bantaje phcc",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.68,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"barkin dutse primary health care center",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.616,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"bete primary health care center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.004,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"bitako phcc",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.48,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"borno-kuru-kuru",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.64,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"budong primary health clinic",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.62,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"chenchenji primary health center",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.02,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"costine primary health center",
+    "PHC LGA":"Ussa",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.008,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"dankum primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.46,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"didango primary health care muri a ward karim lamido lga",
+    "PHC LGA":"Karim Lamido",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.104,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"dingding phcc",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.68,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"dutse primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.02,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"fada primary health clinic",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.408,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"first referral hospital sunkani",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.028,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"garin jatau phc",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.416,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"gayama primary health care center",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.4,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"high mammy primary health center.",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.08,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"hon imam primary healthcare centre jalingo",
+    "PHC LGA":"Jalingo",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.232,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"jenuwa gida primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.02,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"jimlari primary health care centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.276,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kajong primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.04,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kakara primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.016,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kankani primary health clinic",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.436,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"karim jen ardido ward kodi dispensary primary health center",
+    "PHC LGA":"Karim Lamido",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.02,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kashimbila primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.004,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kasimbli primary health center. a opposite center mo- ques kasimbli",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba state",
+    "resource_risk_score":0.02,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kente primary health care center",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.2,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kpankufung primary health cente",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.84,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"kpankufung primary health center",
+    "PHC LGA":"Takum",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.0,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kunini primary health care center",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.628,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"kusuku primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.008,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"kwesati primary health center",
+    "PHC LGA":"USSA",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.6,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"laapo primary health care center",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.62,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"lagos buban health post",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.608,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"lamido borno primary health care center",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.28,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"lankaviri primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.68,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"lau primary health care centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.364,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"lekitaba primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.08,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"mayo ndaga primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.12,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"mayo-kam primary health care center",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.64,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"mutum-biyu primary healthcare centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.436,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"ndo(ando) idi phcc",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.64,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"negrah primary health center",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.004,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"nyita primary health care center",
+    "PHC LGA":"Gonga",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.128,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"old barade modern primary healthcare centre",
+    "PHC LGA":"Jalingo",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.616,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"pamanga primary health care centers",
+    "PHC LGA":"Bali",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.416,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"phcc sarki kudu ibi lga",
+    "PHC LGA":"Ibi",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.5,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"phcc zango kombi",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.472,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"primary health care center mallum",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.216,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"primary health care centre ardo kola",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.488,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"primary health care centre sibre",
+    "PHC LGA":"Ardo-kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.208,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"primary health care rafin damisa dispensary.",
+    "PHC LGA":"Ibi",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.6,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"puje(wukari) phcc",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.48,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"pupule primary health care center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.0,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"pwadzu",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.42,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"sabo gida primary health care centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.424,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"sahkaka primary health clinic",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.02,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"sala duna dispensary primary health center",
+    "PHC LGA":"Karim Lamido",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.024,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"tasompo phcc",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.624,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"tunapo primary health care center",
+    "PHC LGA":"Zing",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.624,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"wapan nghaku primary health care center",
+    "PHC LGA":"Wukari",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.024,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"warwar primary health clinic",
+    "PHC LGA":"Sardauna",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.024,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"wasabi health post",
+    "PHC LGA":"Donga",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.424,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"wuro ladde phcc",
+    "PHC LGA":"Ardo kola",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.624,
+    "resource_alert":"High"
+  },
+  {
+    "Name of Primary Health Center":"yarima primary healthcare centre",
+    "PHC LGA":"Gassol",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.424,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"yirom primary health center",
+    "PHC LGA":"Ussa",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.08,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"yitti primary health centre",
+    "PHC LGA":"Lau",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.48,
+    "resource_alert":"Medium"
+  },
+  {
+    "Name of Primary Health Center":"yorro lankaviri waru primary health center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.08,
+    "resource_alert":"Low"
+  },
+  {
+    "Name of Primary Health Center":"yorro manang boli sabo health center",
+    "PHC LGA":"Yorro",
+    "State of PHC":"Taraba State",
+    "resource_risk_score":0.08,
+    "resource_alert":"Low"
+  }
+]
