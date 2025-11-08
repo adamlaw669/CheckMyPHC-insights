@@ -11,8 +11,8 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     # Directory paths
-    OUTPUT_DIR: str = "../Backend/Outputs"
-    DATA_DIR: str = "../Backend/Data"
+    OUTPUT_DIR: str = "outputs"
+    DATA_DIR: str = "data"
 
     # CORS configuration
     CORS_ORIGINS: str = "*"

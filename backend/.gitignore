@@ -39,5 +39,5 @@ logs/
 
 # Data (if large)
 # Uncomment if data files are large
-# Backend/Data/
-# Backend/Outputs/
+# data/
+# outputs/

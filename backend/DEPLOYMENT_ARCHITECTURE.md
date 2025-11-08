@@ -109,7 +109,7 @@ Data Processing
 Environment: Local Machine
 Runtime: Python 3.10+
 Server: Uvicorn (reload enabled)
-Data: ../Backend/Outputs and ../Backend/Data
+Data: outputs and data
 Logs: Console + logs/app.log
 ```
 
@@ -143,12 +143,12 @@ uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers
 
 ```
 GitHub Repository
-    └── Backend/
-        ├── Outputs/
+    └── backend/
+        ├── outputs/
         │   ├── outbreak_alerts.json (committed)
         │   ├── underserved_phcs.json (committed)
         │   └── resource_warnings.json (committed)
-        └── Data/
+        └── data/
             └── telecommunication.csv (committed)
 ```
 
@@ -415,8 +415,8 @@ Pro Plan ($85/mo per instance)
 
 | Variable | Development | Production | Description |
 |----------|-------------|------------|-------------|
-| `OUTPUT_DIR` | `../Backend/Outputs` | `/data/outputs` | Insight outputs |
-| `DATA_DIR` | `../Backend/Data` | `/data/source` | Source data |
+| `OUTPUT_DIR` | `outputs` | `/data/outputs` | Insight outputs |
+| `DATA_DIR` | `data` | `/data/source` | Source data |
 | `CORS_ORIGINS` | `*` | `https://yourdomain.com` | Allowed origins |
 | `LOG_LEVEL` | `DEBUG` | `INFO` or `WARNING` | Logging verbosity |
 | `PORT` | `8000` | `$PORT` (from Render) | Server port |

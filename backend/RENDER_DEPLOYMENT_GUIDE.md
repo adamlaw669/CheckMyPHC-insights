@@ -11,8 +11,8 @@ Before you begin, ensure you have:
 1. ✅ A [Render account](https://dashboard.render.com/register) (free tier available)
 2. ✅ Your backend code pushed to a GitHub repository
 3. ✅ Access to your data files:
-   - `Backend/Outputs/` (outbreak_alerts.json, underserved_phcs.json, resource_warnings.json)
-   - `Backend/Data/` (telecommunication.csv)
+   - `backend/outputs/` (outbreak_alerts.json, underserved_phcs.json, resource_warnings.json)
+   - `backend/data/` (telecommunication.csv)
 
 ## 🚀 Deployment Methods
 
@@ -112,7 +112,7 @@ services:
 
 ### Step 4: Handle Data Files
 
-⚠️ **Important**: Your backend needs access to data files in `Backend/Outputs/` and `Backend/Data/`.
+⚠️ **Important**: Your backend needs access to data files in `backend/outputs/` and `backend/data/`.
 
 #### Option A: Include Data Files in Repository (Simplest)
 
@@ -120,8 +120,8 @@ If your data files are small (<100MB):
 
 1. Ensure data files are committed to your repository:
    ```bash
-   git add Backend/Outputs/*.json
-   git add Backend/Data/*.csv
+   git add backend/outputs/*.json
+   git add backend/data/*.csv
    git commit -m "Add data files for deployment"
    git push
    ```
@@ -130,8 +130,8 @@ If your data files are small (<100MB):
 
    ```dockerfile
    # Add after COPY app ./app
-   COPY ../Backend/Outputs /data/outputs
-   COPY ../Backend/Data /data/source
+   COPY outputs /data/outputs
+   COPY data /data/source
    ```
 
 #### Option B: Use Render Disks (For Larger Files)

@@ -106,24 +106,24 @@ Expected response:
 ## Handling Data Files 📦
 
 Your backend needs access to:
-- `Backend/Outputs/*.json`
-- `Backend/Data/*.csv`
+- `backend/outputs/*.json`
+- `backend/data/*.csv`
 
 ### Option A: Include in Repository (Simplest)
 
 If files are <100MB:
 
 ```bash
-git add Backend/Outputs/*.json
-git add Backend/Data/*.csv
+git add backend/outputs/*.json
+git add backend/data/*.csv
 git commit -m "Add data files"
 git push
 ```
 
 Update `Dockerfile` (add after line 19):
 ```dockerfile
-COPY ../Backend/Outputs /data/outputs
-COPY ../Backend/Data /data/source
+COPY outputs /data/outputs
+COPY data /data/source
 ```
 
 ### Option B: Use Render Disks
